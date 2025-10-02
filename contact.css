@@ -1,0 +1,612 @@
+
+@font-face {
+    font-family: 'Neue Plak Extended';
+    src: url('fonts/NeuePlak-ExtendedSemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Neue Plak Extended', Arial, sans-serif;
+    background-color: #ece3da;
+    color: #333;
+    line-height: 1.6;
+  }
+
+  /* =========================
+   HEADER
+   ========================= */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  background: #ece3da;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1200;
+}
+
+header .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+  
+  header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+  
+  header a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 1.5rem;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    padding-bottom: 5px;
+  }
+  
+  header a:hover {
+    color: #666;
+  }
+  
+  header a.active {
+    color: #666;
+    font-weight: bold;
+    border-bottom: 2px solid #666;
+  }
+  
+  .page-container {
+      padding-top: 120px; /* Offset for fixed header */
+      padding-bottom: 80px;
+      padding-left: 2rem;
+      padding-right: 2rem;
+  }
+  
+  .contact-layout-container {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+  }
+  
+  .contact-intro-column h1 {
+      font-size: 3em;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+  }
+  
+  .contact-intro-column p {
+      font-size: 1.1em;
+      color: #555;
+      line-height: 1.7;
+  }
+  
+  .direct-contact-info {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid #ddd;
+  }
+  
+  .direct-contact-info h4 {
+      margin-bottom: 1rem;
+      font-size: 1.1em;
+      color: #333;
+  }
+  
+  .direct-contact-info a {
+      display: block;
+      color: #555;
+      text-decoration: none;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+  }
+  
+  .direct-contact-info a:hover {
+      color: #a98875;
+  }
+  
+  .form-card {
+      background: #fff;
+      padding: 2.5rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.07);
+  }
+  
+  .form-group {
+      margin-bottom: 1.25rem;
+  }
+
+  .form-group label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.9em;
+      color: #333;
+      margin-bottom: 0.5rem;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-family: Arial, Helvetica, sans-serif; 
+      font-size: 1em;
+      background-color: #fdfdfd;
+  }
+  
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+      font-family: 'Neue Plak Extended', Arial, sans-serif;
+      color: #aaa;
+  }
+  
+  .form-group select {
+      cursor: pointer;
+      font-family: 'Neue Plak Extended', Arial, sans-serif;
+  }
+  
+  .cta-button-submit {
+      display: inline-block;
+      width: 100%;
+      padding: 1rem;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-family: 'Neue Plak Extended', Arial, sans-serif;
+      font-size: 1em;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      transition: background-color 0.3s ease;
+  }
+  
+  .cta-button-submit:hover {
+      background-color: #555;
+  }
+  
+/* Responsive adjustments */
+  @media (max-width: 992px) {
+      .contact-layout-container {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+      }
+      .contact-intro-column {
+          text-align: center;
+      }
+      .direct-contact-info {
+          text-align: center;
+      }
+  }
+
+  /* =========================
+     FOOTER
+     ========================= */
+  footer {
+    background: #333;
+    color: white;
+    padding: 3rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  footer h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-family: 'Neue Plak Extended', Arial, sans-serif;
+    font-weight: 600;
+  }
+  
+  footer h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    font-family: 'Neue Plak Extended', Arial, sans-serif;
+    font-weight: 600;
+  }
+  
+  footer p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    font-family: 'Neue Plak Extended', Arial, sans-serif;
+    font-weight: normal;
+  }
+  
+  .footer-left {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .footer-right {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    min-width: 300px;
+  }
+
+/* Large tablets and small desktops */
+@media (max-width: 1024px) {
+  header {
+    padding: 1.5rem 2rem;
+  }
+  
+  .page-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  .contact-layout-container {
+    gap: 3rem;
+    max-width: 1000px;
+  }
+  
+  .contact-intro-column h1 {
+    font-size: 2.6em;
+  }
+  
+  .contact-intro-column p {
+    font-size: 1.05em;
+  }
+  
+  .form-card {
+    padding: 2rem;
+  }
+  
+  footer {
+    padding: 2.5rem;
+  }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  header {
+    padding: 1rem 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  header .logo {
+    font-size: 1.3rem;
+    border-bottom: 1px solid #aaa;
+  }
+  
+  header ul {
+    gap: 1.5rem;
+  }
+  
+  header a {
+    font-size: 1.3rem;
+  }
+  
+  .page-container {
+    padding-top: 140px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-bottom: 60px;
+  }
+  
+  .contact-layout-container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  
+  .contact-intro-column {
+    text-align: center;
+  }
+  
+  .contact-intro-column h1 {
+    font-size: 2.2em;
+    margin-bottom: 1.2rem;
+  }
+  
+  .contact-intro-column p {
+    font-size: 1em;
+  }
+  
+  .direct-contact-info {
+    text-align: center;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+  }
+  
+  .direct-contact-info h4 {
+    font-size: 1em;
+  }
+  
+  .form-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.9rem;
+    font-size: 1em;
+  }
+  
+  .cta-button-submit {
+    padding: 1.1rem;
+    font-size: 1em;
+  }
+  
+  footer {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+  
+  .footer-right {
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .footer-left h3 {
+    font-size: 1.6rem;
+  }
+  
+  .footer-right h4 {
+    font-size: 1.2rem;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  header {
+    padding: 0.8rem 1rem;
+  }
+  
+  header .logo {
+    font-size: 1.1rem;
+    border-bottom: 1px solid #aaa;
+  }
+  
+  header ul {
+    gap: 1rem;
+  }
+  
+  header a {
+    font-size: 1.1rem;
+  }
+  
+  .page-container {
+    padding-top: 120px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 50px;
+  }
+  
+  .contact-layout-container {
+    gap: 2rem;
+  }
+  
+  .contact-intro-column h1 {
+    font-size: 1.8em;
+    margin-bottom: 1rem;
+  }
+  
+  .contact-intro-column p {
+    font-size: 0.95em;
+  }
+  
+  .direct-contact-info {
+    margin-top: 1.2rem;
+    padding-top: 1.2rem;
+  }
+  
+  .direct-contact-info h4 {
+    font-size: 0.95em;
+    margin-bottom: 0.8rem;
+  }
+  
+  .direct-contact-info a {
+    font-size: 0.9em;
+    margin-bottom: 0.4rem;
+  }
+  
+  .form-card {
+    padding: 1.5rem 1rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .form-group label {
+    font-size: 0.85em;
+    margin-bottom: 0.4rem;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.8rem;
+    font-size: 0.95em;
+  }
+  
+  .form-group textarea {
+    rows: 4;
+  }
+  
+  .cta-button-submit {
+    padding: 1rem;
+    font-size: 0.95em;
+  }
+  
+  footer {
+    padding: 1.5rem 1rem;
+  }
+  
+  .footer-right {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .footer-left h3, .footer-right h4 {
+    font-size: 1.1rem;
+  }
+  
+  .footer-left p, .footer-right p {
+    font-size: 1rem;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 320px) {
+  header {
+    padding: 0.5rem;
+  }
+  
+  header .logo {
+    font-size: 1rem;
+    border-bottom: 1px solid #aaa;
+  }
+  
+  header a {
+    font-size: 1rem;
+  }
+  
+  .page-container {
+    padding-top: 100px;
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+    padding-bottom: 40px;
+  }
+  
+  .contact-intro-column h1 {
+    font-size: 1.5em;
+  }
+  
+  .contact-intro-column p {
+    font-size: 0.9em;
+  }
+  
+  .direct-contact-info h4 {
+    font-size: 0.9em;
+  }
+  
+  .direct-contact-info a {
+    font-size: 0.85em;
+  }
+  
+  .form-card {
+    padding: 1.2rem 0.8rem;
+  }
+  
+  .form-group label {
+    font-size: 0.8em;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.7rem;
+    font-size: 0.9em;
+  }
+  
+  .cta-button-submit {
+    padding: 0.9rem;
+    font-size: 0.9em;
+  }
+  
+  footer {
+    padding: 1rem 0.5rem;
+  }
+  
+  .footer-left h3, .footer-right h4 {
+    font-size: 1rem;
+  }
+  
+  .footer-left p, .footer-right p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: row;
+    justify-content: flex-start; /* left align */
+    align-items: center;
+    gap: 1rem;
+    text-align: left;
+  }
+
+  header ul {
+    flex-direction: row;      /* keep nav links in a row */
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+  }
+}
+
+/* Mobile Sidebar Navigation */
+.menu-toggle {
+  display: none;
+  background: #ece3da;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  padding: 0.4rem 0.6rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.sidebar-overlay { display: none; }
+
+@media (max-width: 768px) {
+  .menu-toggle { display: inline-block; }
+
+  header nav {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    width: 260px;
+    height: 100vh;
+    background: #ece3da;
+    box-shadow: 4px 0 16px rgba(0,0,0,0.15);
+    padding: 100px 1rem 2rem;
+    transition: left 0.3s ease;
+    z-index: 1100;
+  }
+
+  header nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  header nav a { font-size: 1.3rem; }
+
+  body.sidebar-open header nav { left: 0; }
+
+  .sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 1050;
+  }
+
+  body.sidebar-open .sidebar-overlay { display: block; }
+}
+
+/* Left-align hamburger on mobile */
+@media (max-width: 768px) {
+  .menu-toggle {
+    order: -1;
+    margin-right: 0.75rem;
+  }
+}

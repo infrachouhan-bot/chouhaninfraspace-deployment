@@ -1,0 +1,625 @@
+/* =========================
+   RESET & FONT
+   ========================= */
+@font-face {
+  font-family: 'Neue Plak Extended';
+  src: url('fonts/NeuePlak-ExtendedSemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================
+   BODY
+   ========================= */
+body {
+  font-family: 'Neue Plak Extended', Arial, sans-serif;
+  background-color: #ece3da;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* =========================
+   HEADER
+   ========================= */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  background: #ece3da;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1200;
+}
+
+header .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+header a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 1.5rem;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  padding-bottom: 5px;
+}
+
+header a:hover {
+  color: #666;
+}
+
+header nav ul li a.active {
+  color: #666;
+  font-weight: bold;
+  border-bottom: 2px solid #666;
+}
+
+/* =========================
+   HOMEPAGE: HERO SECTION
+   ========================= */
+.hero {
+  height: 100vh;
+  background: url('images/hero.jpg') no-repeat center center/cover;
+  position: relative;
+  margin-top: 70px;
+}
+
+.hero h1 {
+  font-family: 'Neue Plak Extended', Arial, sans-serif;
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: white;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.35);
+}
+
+.hero .overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: left;
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+  max-width: 80%;
+}
+
+/* =========================
+   HOMEPAGE: SERVICES SECTION
+   ========================= */
+#services {
+  padding: 5rem 3rem;
+  text-align: center;
+}
+
+#services h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.services-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 1rem;
+}
+
+.service-card {
+  flex: 1;
+  padding: 3rem 2rem;
+  background: #ece3da;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.service-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  margin-bottom: 1.5rem;
+  border-radius: 20px;
+}
+
+.service-card h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.service-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* =========================
+   ABOUT & CONTACT PAGE STYLES
+   ========================= */
+.page-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 120px 20px 60px 20px;
+  min-height: 40vh; 
+}
+
+.about-section h1 {
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #333;
+}
+
+.about-section h3 {
+  font-size: 1.8em;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: left;
+}
+
+.about-section p, .about-section li {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #555;
+  text-align: left;
+}
+
+.about-section ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.about-section li::before {
+  content: '✓';
+  color: #a98875;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+/* =========================
+   FEATURE SECTION WITH BACKGROUND IMAGE - FIXED
+   ========================= */
+.feature-section {
+  background: #a98875 url('images/aboutusimg.jpg') no-repeat center center/cover;
+  position: relative;
+  padding: 100px 20px;
+  text-align: center;
+  color: white;
+}
+
+.feature-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+  border: 2px solid black;
+  padding: 40px;
+  border-radius: 10px;
+}
+
+.feature-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.feature-content p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+/* Optional overlay for better text readability */
+.feature-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+footer {
+  background: #333;
+  color: white;
+  padding: 3rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+footer h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-family: 'Neue Plak Extended', Arial, sans-serif;
+  font-weight: 600;
+}
+
+footer h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-family: 'Neue Plak Extended', Arial, sans-serif;
+  font-weight: 600;
+}
+
+footer p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  font-family: 'Neue Plak Extended', Arial, sans-serif;
+  font-weight: normal;
+}
+
+.footer-left {
+  flex: 1;
+  min-width: 300px;
+}
+
+.footer-right {
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  min-width: 300px;
+}
+
+/* =========================
+   RESPONSIVE DESIGN - MEDIA QUERIES
+   ========================= */
+
+/* Large tablets and small desktops */
+@media (max-width: 1024px) {
+  header {
+    padding: 1.5rem 2rem;
+  }
+  
+  .page-container {
+    padding: 120px 30px 60px 30px;
+  }
+  
+  .about-section h1 {
+    font-size: 2.2em;
+  }
+  
+  .about-section h3 {
+    font-size: 1.6em;
+  }
+  
+  .about-section p, .about-section li {
+    font-size: 1.05em;
+  }
+  
+  .feature-content {
+    padding: 35px;
+  }
+  
+  .feature-content h2 {
+    font-size: 2.2rem;
+  }
+  
+  .feature-content p {
+    font-size: 1.1rem;
+  }
+  
+  footer {
+    padding: 2.5rem;
+  }
+}
+
+  /* Tablets */
+  @media (max-width: 768px) {
+    header {
+      padding: 1rem 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+      border-bottom: none;
+    }
+    
+    header .logo {
+      font-size: 1.3rem;
+      border-bottom: none;
+    }
+  
+  header ul {
+    gap: 1.5rem;
+  }
+  
+  header a {
+    font-size: 1.3rem;
+  }
+  
+  .page-container {
+    padding: 140px 25px 60px 25px;
+  }
+  
+  .about-section h1 {
+    font-size: 1.9em;
+    margin-bottom: 25px;
+  }
+  
+  .about-section h3 {
+    font-size: 1.4em;
+    margin-top: 35px;
+    margin-bottom: 15px;
+  }
+  
+  .about-section p, .about-section li {
+    font-size: 1em;
+    margin-bottom: 18px;
+  }
+  
+  .feature-section {
+    padding: 60px 20px;
+    background-attachment: scroll;
+  }
+  
+  .feature-content {
+    padding: 30px 25px;
+    border-width: 1px;
+  }
+  
+  .feature-content h2 {
+    font-size: 1.9rem;
+    margin-bottom: 15px;
+  }
+  
+  .feature-content p {
+    font-size: 1rem;
+  }
+  
+  footer {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+  
+  .footer-right {
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .footer-left h3 {
+    font-size: 1.6rem;
+  }
+  
+  .footer-right h4 {
+    font-size: 1.2rem;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  header {
+    padding: 0.8rem 1rem;
+  }
+  
+  header .logo {
+    font-size: 1.1rem;
+  }
+  
+  header ul {
+    gap: 1rem;
+  }
+  
+  header a {
+    font-size: 1.1rem;
+  }
+  
+  .page-container {
+    padding: 120px 20px 40px 20px;
+  }
+  
+  .about-section h1 {
+    font-size: 1.6em;
+    margin-bottom: 20px;
+  }
+  
+  .about-section h3 {
+    font-size: 1.2em;
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
+  
+  .about-section p, .about-section li {
+    font-size: 0.95em;
+    margin-bottom: 15px;
+  }
+  
+  .feature-section {
+    padding: 40px 15px;
+  }
+  
+  .feature-content {
+    padding: 20px 15px;
+    max-width: 100%;
+  }
+  
+  .feature-content h2 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+  }
+  
+  .feature-content p {
+    font-size: 0.95rem;
+  }
+  
+  footer {
+    padding: 1.5rem 1rem;
+  }
+  
+  .footer-right {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .footer-left h3, .footer-right h4 {
+    font-size: 1.1rem;
+  }
+  
+  .footer-left p, .footer-right p {
+    font-size: 1rem;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 320px) {
+  header {
+    padding: 0.5rem;
+  }
+  
+  header .logo {
+    font-size: 1rem;
+  }
+  
+  header a {
+    font-size: 1rem;
+  }
+  
+  .page-container {
+    padding: 100px 15px 30px 15px;
+  }
+  
+  .about-section h1 {
+    font-size: 1.4em;
+  }
+  
+  .about-section h3 {
+    font-size: 1.1em;
+  }
+  
+  .about-section p, .about-section li {
+    font-size: 0.9em;
+  }
+  
+  .feature-section {
+    padding: 30px 10px;
+  }
+  
+  .feature-content {
+    padding: 15px 10px;
+  }
+  
+  .feature-content h2 {
+    font-size: 1.4rem;
+  }
+  
+  .feature-content p {
+    font-size: 0.9rem;
+  }
+  
+  footer {
+    padding: 1rem 0.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: row;
+    justify-content: flex-start;  /* left align */
+    align-items: center;
+    gap: 1rem;
+    text-align: left;
+  }
+
+  header ul {
+    flex-direction: row;      /* keep nav links in a row */
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+  }
+}
+
+/* Left-align hamburger on mobile */
+@media (max-width: 768px) {
+  .menu-toggle {
+    order: -1;
+    margin-right: 0.75rem;
+  }
+}
+
+/* Mobile Sidebar Navigation */
+.menu-toggle {
+  display: none;
+  background: #ece3da;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  padding: 0.4rem 0.6rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.sidebar-overlay { display: none; }
+
+@media (max-width: 768px) {
+  .menu-toggle { display: inline-block; }
+
+  header nav {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    width: 260px;
+    height: 100vh;
+    background: #ece3da;
+    box-shadow: 4px 0 16px rgba(0,0,0,0.15);
+    padding: 100px 1rem 2rem;
+    transition: left 0.3s ease;
+    z-index: 1100;
+  }
+
+  header nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  header nav a { font-size: 1.3rem; }
+
+  body.sidebar-open header nav { left: 0; }
+
+  .sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 1050;
+  }
+
+  body.sidebar-open .sidebar-overlay { display: block; }
+}

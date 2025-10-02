@@ -1,0 +1,187 @@
+// Smooth scrolling effect
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener("click", function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute("href"));
+    if (target) {
+      target.scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+  });
+});
+
+// Mobile viewport height fix for iOS Safari
+function setViewportHeight() {
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+// Set initial viewport height
+setViewportHeight();
+
+// Update viewport height on resize and orientation change
+window.addEventListener('resize', setViewportHeight);
+window.addEventListener('orientationchange', () => {
+  setTimeout(setViewportHeight, 100);
+});
+
+// Form submission handling for contact page
+document.addEventListener('DOMContentLoaded', function() {
+  const contactForm = document.querySelector('form[action*="script.google.com"]');
+  
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      const submitButton = this.querySelector('.cta-button-submit');
+      const originalText = submitButton.textContent;
+      
+      // Show loading state
+      submitButton.textContent = 'Sending...';
+      submitButton.disabled = true;
+      
+      // Reset button after 3 seconds (adjust as needed)
+      setTimeout(() => {
+        submitButton.textContent = originalText;
+        submitButton.disabled = false;
+      }, 3000);
+    });
+  }
+});
+
+// Intersection Observer for fade-in animations (optional enhancement)
+if ('IntersectionObserver' in window) {
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('fade-in');
+      }
+    });
+  }, observerOptions);
+
+  // Observe elements that should fade in
+  document.querySelectorAll('.service-card, .about-section, .feature-content').forEach(el => {
+    observer.observe(el);
+  });
+}
+
+// Touch-friendly hover effects for mobile
+function addTouchFriendlyHovers() {
+  const cards = document.querySelectorAll('.service-card');
+  
+  cards.forEach(card => {
+    card.addEventListener('touchstart', function() {
+      this.classList.add('touch-active');
+    });
+    
+    card.addEventListener('touchend', function() {
+      setTimeout(() => {
+        this.classList.remove('touch-active');
+      }, 150);
+    });
+  });
+}
+
+// Initialize touch-friendly features
+addTouchFriendlyHovers();
+
+// Debounced resize handler for performance
+let resizeTimeout;
+window.addEventListener('resize', function() {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(function() {
+    // Add any resize-specific logic here
+    setViewportHeight();
+  }, 250);
+});
+
+// Simple carousel controls for project image carousels
+document.addEventListener('DOMContentLoaded', function() {
+  const carousels = document.querySelectorAll('.carousel');
+  carousels.forEach(carousel => {
+    const track = carousel.querySelector('.carousel-track');
+    const items = carousel.querySelectorAll('.carousel-item');
+    const prevBtn = carousel.querySelector('.carousel-btn.prev');
+    const nextBtn = carousel.querySelector('.carousel-btn.next');
+
+    let index = 0;
+    const visibleAttr = carousel.getAttribute('data-visible');
+    const visible = visibleAttr ? parseInt(visibleAttr, 10) : 1;
+    let slideWidth = carousel.clientWidth;
+    let maxIndex = Math.max(0, items.length - visible);
+    function compute() {
+      slideWidth = carousel.clientWidth;
+      maxIndex = Math.max(0, items.length - visible);
+    }
+    function update() {
+      track.style.transform = `translateX(-${index * slideWidth}px)`;
+      prevBtn.disabled = index === 0;
+      nextBtn.disabled = index >= maxIndex;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      index = Math.max(0, index - 1);
+      update();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      index = Math.min(maxIndex, index + 1);
+      update();
+    });
+
+    // Recalculate on resize in case of layout changes
+    window.addEventListener('resize', () => { compute(); update(); });
+
+    compute();
+    update();
+  });
+});
+
+// Mobile sidebar navigation toggle
+document.addEventListener('DOMContentLoaded', function() {
+  const menuToggle = document.querySelector('.menu-toggle');
+  const overlay = document.querySelector('.sidebar-overlay');
+
+  function openSidebar() {
+    document.body.classList.add('sidebar-open');
+    if (menuToggle) menuToggle.setAttribute('aria-expanded', 'true');
+    if (overlay) overlay.hidden = false;
+  }
+
+  function closeSidebar() {
+    document.body.classList.remove('sidebar-open');
+    if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+    if (overlay) overlay.hidden = true;
+  }
+
+  if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+      const isOpen = document.body.classList.contains('sidebar-open');
+      if (isOpen) {
+        closeSidebar();
+      } else {
+        openSidebar();
+      }
+    });
+  }
+
+  if (overlay) {
+    overlay.addEventListener('click', closeSidebar);
+  }
+
+  // Close sidebar when navigating via a link
+  document.querySelectorAll('header nav a').forEach(link => {
+    link.addEventListener('click', closeSidebar);
+  });
+
+  // Close sidebar on resize to desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      closeSidebar();
+    }
+  });
+});
