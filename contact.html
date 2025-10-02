@@ -64,6 +64,23 @@
                     <option value="Other">Other</option>
                 </select>
             </div>
+            <!-- Conditional style preference dropdown: only shown for Interior Renovation -->
+            <div class="form-group" id="style-group" style="display: none;">
+                <label for="style-preference">Preferred interior style *</label>
+                <select id="style-preference" name="style-preference">
+                    <option value="" disabled selected>Select a style...</option>
+                    <option value="Bohemian">Bohemian</option>
+                    <option value="Scandinavian">Scandinavian</option>
+                    <option value="Industrial">Industrial</option>
+                    <option value="Minimalist">Minimalist</option>
+                    <option value="Contemporary">Contemporary</option>
+                    <option value="Traditional">Traditional</option>
+                    <option value="Mid-century Modern">Mid-century Modern</option>
+                    <option value="Rustic">Rustic</option>
+                    <option value="Art Deco">Art Deco</option>
+                    <option value="Coastal">Coastal</option>
+                </select>
+            </div>
             <div class="form-group">
                 <label for="message">Tell us about your project </label>
                 <textarea id="message" name="message" rows="5" placeholder="Provide some details about your project, timeline, or any questions you have..."></textarea>

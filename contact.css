@@ -579,7 +579,7 @@ header .logo {
     background: #ece3da;
     box-shadow: 4px 0 16px rgba(0,0,0,0.15);
     padding: 100px 1rem 2rem;
-    transition: left 0.3s ease;
+    transition: left 0.4s ease-in-out;
     z-index: 1100;
   }
 
@@ -598,9 +598,16 @@ header .logo {
     inset: 0;
     background: rgba(0,0,0,0.4);
     z-index: 1050;
+    display: block;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease-in-out;
   }
 
-  body.sidebar-open .sidebar-overlay { display: block; }
+  body.sidebar-open .sidebar-overlay {
+    opacity: 1;
+    pointer-events: auto;
+  }
 }
 
 /* Left-align hamburger on mobile */

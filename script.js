@@ -149,13 +149,16 @@ document.addEventListener('DOMContentLoaded', function() {
   function openSidebar() {
     document.body.classList.add('sidebar-open');
     if (menuToggle) menuToggle.setAttribute('aria-expanded', 'true');
-    if (overlay) overlay.hidden = false;
+    if (overlay) overlay.hidden = false; // ensure overlay is in the flow for fade-in
   }
 
   function closeSidebar() {
     document.body.classList.remove('sidebar-open');
     if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
-    if (overlay) overlay.hidden = true;
+    // Delay hiding to allow fade-out to complete
+    if (overlay) {
+      setTimeout(() => { overlay.hidden = true; }, 350);
+    }
   }
 
   if (menuToggle) {
@@ -184,4 +187,26 @@ document.addEventListener('DOMContentLoaded', function() {
       closeSidebar();
     }
   });
+});
+
+// Conditional style dropdown on contact page
+document.addEventListener('DOMContentLoaded', function() {
+  const projectType = document.getElementById('project-type');
+  const styleGroup = document.getElementById('style-group');
+  const styleSelect = document.getElementById('style-preference');
+
+  function updateStyleVisibility() {
+    if (!projectType || !styleGroup || !styleSelect) return;
+    const isInterior = projectType.value === 'Interior Renovation';
+    styleGroup.style.display = isInterior ? 'block' : 'none';
+    styleSelect.required = isInterior;
+    if (!isInterior) {
+      styleSelect.value = '';
+    }
+  }
+
+  if (projectType && styleGroup) {
+    updateStyleVisibility();
+    projectType.addEventListener('change', updateStyleVisibility);
+  }
 });
