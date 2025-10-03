@@ -659,6 +659,33 @@ header nav ul li a.active {
     z-index: 1100;
   }
 
+  /* Back button in mobile sidebar */
+  header nav .sidebar-back-button {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    color: #333;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  header nav .sidebar-back-button .icon {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+  }
+
+  header nav .sidebar-back-button:hover {
+    background: rgba(0,0,0,0.06);
+  }
+
   header nav ul {
     display: flex;
     flex-direction: column;

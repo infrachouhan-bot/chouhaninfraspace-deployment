@@ -166,6 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
   const menuToggle = document.querySelector('.menu-toggle');
   const overlay = document.querySelector('.sidebar-overlay');
+  const nav = document.querySelector('header nav');
 
   function openSidebar() {
     document.body.classList.add('sidebar-open');
@@ -197,6 +198,24 @@ document.addEventListener('DOMContentLoaded', function() {
     overlay.addEventListener('click', closeSidebar);
   }
 
+  // Create and wire Back button with SVG icon for mobile sidebar
+  function ensureBackButton() {
+    if (!nav || window.innerWidth > 768 || nav.querySelector('.sidebar-back-button')) return;
+    const backBtn = document.createElement('button');
+    backBtn.type = 'button';
+    backBtn.className = 'sidebar-back-button';
+    backBtn.setAttribute('aria-label', 'Close menu');
+    backBtn.innerHTML = `
+      <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    `;
+    nav.insertBefore(backBtn, nav.firstChild);
+    backBtn.addEventListener('click', closeSidebar);
+  }
+
+  ensureBackButton();
+
   // Close sidebar when navigating via a link
   document.querySelectorAll('header nav a').forEach(link => {
     link.addEventListener('click', closeSidebar);
@@ -207,6 +226,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (window.innerWidth > 768) {
       closeSidebar();
     }
+    // Ensure Back button exists when switching to mobile
+    ensureBackButton();
   });
 });
 
