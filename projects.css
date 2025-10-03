@@ -155,122 +155,18 @@
 }
 
 /* =========================
-   HEADER
+   HEADER (use global styles from style.css)
    ========================= */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 3rem;
-  background: #ece3da;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1200;
-}
+/* Removed page-specific header overrides to keep navbar consistent with HOME */
 
-header .logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-/* Active Navigation Link */
-header a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  font-size: 1.5rem;
-  transition: color 0.3s ease, border-bottom 0.3s ease;
-  padding-bottom: 5px;
-}
-
-header a:hover {
-  color: #666;
-}
-
-header nav ul li a.active {
-  color: #666;
-  font-weight: bold;
-  border-bottom: 2px solid #666;
-}
-
-/* Center header nav on tablets/mobiles (match other pages) */
+/* Centering and spacing handled globally; keep only section padding tweak */
 @media (max-width: 768px) {
-  header {
-    flex-direction: row;
-    justify-content: flex-start; /* left align */
-    align-items: center;
-    gap: 1rem;
-    text-align: left;
-  }
-
-  header ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
-  }
-
-  /* Reduce section padding for better centering */
   #projects {
     padding: 2.5rem 1rem;
   }
 }
 
-/* Left-align hamburger on mobile */
-@media (max-width: 768px) {
-  .menu-toggle {
-    order: -1;
-    margin-right: 0.75rem;
-  }
-}
+/* Hamburger alignment handled globally in style.css */
+/* (no page-specific overrides) */
 
-/* Mobile Sidebar Navigation */
-.menu-toggle {
-  display: none;
-  background: #ece3da;
-  border: 1px solid #bbb;
-  border-radius: 8px;
-  padding: 0.4rem 0.6rem;
-  font-size: 1.2rem;
-  cursor: pointer;
-}
-
-.sidebar-overlay { display: none; }
-
-@media (max-width: 768px) {
-  .menu-toggle { display: inline-block; }
-
-  header nav {
-    position: fixed;
-    top: 0;
-    left: -280px;
-    width: 260px;
-    height: 100vh;
-    background: #ece3da;
-    box-shadow: 4px 0 16px rgba(0,0,0,0.15);
-    padding: 100px 1rem 2rem;
-    transition: left 0.3s ease;
-    z-index: 1100;
-  }
-
-  header nav ul {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  header nav a { font-size: 1.3rem; }
-
-  body.sidebar-open header nav { left: 0; }
-
-  .sidebar-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.4);
-    z-index: 1050;
-  }
-
-  body.sidebar-open .sidebar-overlay { display: block; }
-}
+/* Mobile sidebar nav uses shared implementation from style.css */

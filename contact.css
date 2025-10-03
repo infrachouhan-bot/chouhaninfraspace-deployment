@@ -22,17 +22,8 @@
   /* =========================
    HEADER
    ========================= */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 3rem;
-  background: #ece3da;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1200;
-}
+/* Use global header styles from style.css to ensure consistency */
+/* Removed local header base to avoid conflicting overrides */
 
 header .logo {
   font-size: 1.5rem;
@@ -45,24 +36,13 @@ header .logo {
   gap: 2rem;
 }
   
-  header a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    font-size: 1.5rem;
-    transition: color 0.3s ease, border-bottom 0.3s ease;
-    padding-bottom: 5px;
-  }
+/* Navbar link styles are inherited from style.css */
   
   header a:hover {
     color: #666;
   }
   
-  header a.active {
-    color: #666;
-    font-weight: bold;
-    border-bottom: 2px solid #666;
-  }
+/* Active link styling uses the shared rule from style.css */
   
   .page-container {
       padding-top: 120px; /* Offset for fixed header */
@@ -273,25 +253,11 @@ header .logo {
 
 /* Tablets */
 @media (max-width: 768px) {
-  header {
-    padding: 1rem 1.5rem;
-    flex-wrap: wrap;
-    gap: 1rem;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  header .logo {
-    font-size: 1.3rem;
-    border-bottom: 1px solid #aaa;
-  }
-  
-  header ul {
-    gap: 1.5rem;
-  }
-  
-  header a {
-    font-size: 1.3rem;
-  }
+  /* Remove extra borders to match HOME */
+  header { padding: 1rem 1.5rem; flex-wrap: wrap; gap: 1rem; }
+  header .logo { font-size: 1.3rem; }
+  header ul { gap: 1.5rem; }
+  header a { font-size: 1.3rem; }
   
   .page-container {
     padding-top: 140px;
@@ -367,22 +333,10 @@ header .logo {
 
 /* Mobile phones */
 @media (max-width: 480px) {
-  header {
-    padding: 0.8rem 1rem;
-  }
-  
-  header .logo {
-    font-size: 1.1rem;
-    border-bottom: 1px solid #aaa;
-  }
-  
-  header ul {
-    gap: 1rem;
-  }
-  
-  header a {
-    font-size: 1.1rem;
-  }
+  header { padding: 0.8rem 1rem; }
+  header .logo { font-size: 1.1rem; }
+  header ul { gap: 1rem; }
+  header a { font-size: 1.1rem; }
   
   .page-container {
     padding-top: 120px;
@@ -468,18 +422,9 @@ header .logo {
 
 /* Extra small devices */
 @media (max-width: 320px) {
-  header {
-    padding: 0.5rem;
-  }
-  
-  header .logo {
-    font-size: 1rem;
-    border-bottom: 1px solid #aaa;
-  }
-  
-  header a {
-    font-size: 1rem;
-  }
+  header { padding: 0.5rem; }
+  header .logo { font-size: 1rem; }
+  header a { font-size: 1rem; }
   
   .page-container {
     padding-top: 100px;
@@ -579,7 +524,7 @@ header .logo {
     background: #ece3da;
     box-shadow: 4px 0 16px rgba(0,0,0,0.15);
     padding: 100px 1rem 2rem;
-    transition: left 0.4s ease-in-out;
+    transition: left 0.3s ease;
     z-index: 1100;
   }
 
@@ -598,15 +543,11 @@ header .logo {
     inset: 0;
     background: rgba(0,0,0,0.4);
     z-index: 1050;
-    display: block;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.35s ease-in-out;
+    display: none;
   }
 
   body.sidebar-open .sidebar-overlay {
-    opacity: 1;
-    pointer-events: auto;
+    display: block;
   }
 }
 

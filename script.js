@@ -29,21 +29,42 @@ window.addEventListener('orientationchange', () => {
 // Form submission handling for contact page
 document.addEventListener('DOMContentLoaded', function() {
   const contactForm = document.querySelector('form[action*="script.google.com"]');
-  
+
   if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-      const submitButton = this.querySelector('.cta-button-submit');
-      const originalText = submitButton.textContent;
-      
-      // Show loading state
-      submitButton.textContent = 'Sending...';
-      submitButton.disabled = true;
-      
-      // Reset button after 3 seconds (adjust as needed)
-      setTimeout(() => {
-        submitButton.textContent = originalText;
-        submitButton.disabled = false;
-      }, 3000);
+    const submitButton = contactForm.querySelector('.cta-button-submit');
+    const originalText = submitButton ? submitButton.textContent : 'Submit';
+    let awaitingSubmit = false;
+
+    // Create hidden iframe target to avoid page navigation on submit
+    let targetFrame = document.getElementById('form-submit-target');
+    if (!targetFrame) {
+      targetFrame = document.createElement('iframe');
+      targetFrame.name = 'form-submit-target';
+      targetFrame.id = 'form-submit-target';
+      targetFrame.style.display = 'none';
+      document.body.appendChild(targetFrame);
+    }
+    contactForm.setAttribute('target', 'form-submit-target');
+
+    // On submit, show loading state and mark that we are awaiting a response
+    contactForm.addEventListener('submit', function() {
+      awaitingSubmit = true;
+      if (submitButton) {
+        submitButton.textContent = 'Sending...';
+        submitButton.disabled = true;
+      }
+    });
+
+    // When iframe loads after submission, update button with success and reset form
+    targetFrame.addEventListener('load', function() {
+      if (!awaitingSubmit) return; // ignore initial about:blank load
+      awaitingSubmit = false;
+
+      if (submitButton) {
+        submitButton.textContent = 'Submitted ✓';
+        submitButton.disabled = true; // keep disabled to prevent accidental resubmits
+      }
+      contactForm.reset();
     });
   }
 });
@@ -193,7 +214,7 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
   const projectType = document.getElementById('project-type');
   const styleGroup = document.getElementById('style-group');
-  const styleSelect = document.getElementById('style-preference');
+  const styleSelect = document.getElementById('interior-type');
 
   function updateStyleVisibility() {
     if (!projectType || !styleGroup || !styleSelect) return;
