@@ -17,12 +17,14 @@
   /* =========================
      BODY
      ========================= */
-  body {
-    font-family: 'Neue Plak Extended', Arial, sans-serif;
-    background-color: #ece3da; /* beige background */
-    color: #333;
-    line-height: 1.6;
-  }
+body {
+  font-family: 'Neue Plak Extended', Arial, sans-serif;
+  background-color: #ece3da; /* beige background */
+  color: #333;
+  line-height: 1.6;
+}
+
+/* (removed splash preloader styles) */
   
   /* =========================
      HEADER
