@@ -246,7 +246,7 @@ header nav ul li a.active {
    FAQ / Questions Section
    ========================= */
 .faq-section {
-  max-width: 900px; /* match page-container width */
+  max-width: 900px; /* slightly wider than default content */
   margin: 0 auto;
   padding: 24px 20px; /* reduced top padding for tighter spacing */
 }
@@ -350,6 +350,7 @@ header nav ul li a.active {
 
 /* Remove extra gap above FAQ heading and align width to content */
 #faq.page-container {
+  max-width: 1000px; /* widen FAQ container slightly */
   padding-top: 12px; /* minimal offset to clear fixed header */
   margin-top: -36px; /* reduce perceived gap after previous section */
 }
