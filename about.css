@@ -228,7 +228,6 @@ header nav ul li a.active {
   z-index: 2;
   max-width: 800px;
   margin: 0 auto;
-  border: 2px solid black;
   padding: 40px;
   border-radius: 10px;
 }
@@ -243,6 +242,117 @@ header nav ul li a.active {
   line-height: 1.6;
 }
 
+/* =========================
+   FAQ / Questions Section
+   ========================= */
+.faq-section {
+  max-width: 900px; /* match page-container width */
+  margin: 0 auto;
+  padding: 24px 20px; /* reduced top padding for tighter spacing */
+}
+
+.faq-section h3 {
+  font-size: 1.8em;
+  margin-bottom: 0.75rem;
+  color: #333;
+  font-family: 'Neue Plak Extended', Arial, sans-serif;
+}
+
+.faq-section p {
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.faq-controls {
+  margin-bottom: 1rem;
+}
+
+#faq-search {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+  background: #fff;
+  font-size: 1rem;
+  font-family: 'Neue Plak Extended', Arial, sans-serif;
+}
+
+#faq-search::placeholder {
+  font-family: 'Neue Plak Extended', Arial, sans-serif;
+  color: #999;
+  opacity: 1; /* ensure consistent appearance across browsers */
+}
+
+/* Expand/collapse control for FAQ preview */
+.faq-expand {
+  margin: 0.5rem 0;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid #c9bdb2;
+  border-radius: 10px;
+  background: #f6f1ec;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Neue Plak Extended', Arial, sans-serif;
+}
+
+.faq-expand[aria-expanded="true"] {
+  background: #ece3da;
+}
+
+#faq-more { margin-top: 0.5rem; }
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.faq-item {
+  background: #fff;
+  border: 1px solid #c9bdb2;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.faq-toggle {
+  width: 100%;
+  text-align: left;
+  padding: 0.9rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: 'Neue Plak Extended', Arial, sans-serif;
+}
+
+.faq-toggle[aria-expanded="true"] {
+  background: #f6f1ec;
+}
+
+.faq-answer {
+  padding: 0 1rem 1rem 1rem;
+  color: #555;
+  font-family: 'Neue Plak Extended', Arial, sans-serif;
+}
+
+@media (max-width: 768px) {
+  .faq-section { padding: 30px 20px; }
+  .faq-toggle { padding: 0.8rem 0.9rem; }
+}
+
+@media (max-width: 480px) {
+  .faq-section { padding: 25px 15px; }
+}
+
+/* Remove extra gap above FAQ heading and align width to content */
+#faq.page-container {
+  padding-top: 12px; /* minimal offset to clear fixed header */
+  margin-top: -36px; /* reduce perceived gap after previous section */
+}
 /* Optional overlay for better text readability */
 .feature-section::before {
   content: "";
@@ -392,7 +502,6 @@ footer p {
   
   .feature-content {
     padding: 30px 25px;
-    border-width: 1px;
   }
   
   .feature-content h2 {

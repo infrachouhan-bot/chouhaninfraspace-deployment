@@ -252,3 +252,68 @@ document.addEventListener('DOMContentLoaded', function() {
     projectType.addEventListener('change', updateStyleVisibility);
   }
 });
+
+// FAQ: search and accordion toggle
+document.addEventListener('DOMContentLoaded', function() {
+  const faq = document.getElementById('faq');
+  if (!faq) return;
+
+  const searchInput = document.getElementById('faq-search');
+  const items = Array.from(faq.querySelectorAll('.faq-item'));
+  const expandBtn = document.getElementById('faq-expand');
+  const moreContainer = document.getElementById('faq-more');
+
+  // Accordion toggle
+  faq.querySelectorAll('.faq-toggle').forEach(btn => {
+    const answer = document.getElementById(btn.getAttribute('aria-controls'));
+    // Strip any leading numbering (e.g., "1. ") from button text for cleaner titles
+    btn.textContent = btn.textContent.replace(/^\s*\d+\.\s*/, '');
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      if (answer) answer.hidden = expanded; // hide if currently open
+    });
+    // Keyboard support (Enter/Space triggers click by default on button)
+  });
+
+  // Expand/collapse for showing additional questions
+  if (expandBtn && moreContainer) {
+    expandBtn.addEventListener('click', () => {
+      const expanded = expandBtn.getAttribute('aria-expanded') === 'true';
+      const nextExpanded = !expanded;
+      expandBtn.setAttribute('aria-expanded', String(nextExpanded));
+      moreContainer.hidden = !nextExpanded;
+      expandBtn.textContent = nextExpanded ? 'Show fewer questions' : 'Show more questions';
+    });
+  }
+
+  // Simple text search across questions and answers
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      const q = searchInput.value.trim().toLowerCase();
+      items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        item.style.display = q === '' || text.includes(q) ? '' : 'none';
+      });
+
+      // If searching, automatically reveal more questions to show matches
+      if (expandBtn && moreContainer) {
+        if (q !== '') {
+          if (moreContainer.hidden) {
+            moreContainer.hidden = false;
+            expandBtn.setAttribute('aria-expanded', 'true');
+            expandBtn.textContent = 'Show fewer questions';
+          }
+        } else {
+          // If user hasn't manually expanded, collapse back to preview
+          const userExpanded = expandBtn.getAttribute('aria-expanded') === 'true';
+          if (!userExpanded) {
+            moreContainer.hidden = true;
+            expandBtn.setAttribute('aria-expanded', 'false');
+            expandBtn.textContent = 'Show more questions';
+          }
+        }
+      }
+    });
+  }
+});
